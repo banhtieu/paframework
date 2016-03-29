@@ -1,0 +1,29 @@
+h1, h2 {
+    font-family: 'Great Vibes', cursive;
+}
+
+h3 {
+    font-family: Montserrat;
+    color: rgb(172, 42, 42);
+    letter-spacing: 0.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.navbar.navbar-static-top {
+    margin-bottom: 0;
+}
+
+.sub-navbar {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: #555;
+}
+
+.breadcrumb {
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    margin: 0;
+    border-radius: 0;
+    font-size: large;
+}
