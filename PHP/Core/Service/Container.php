@@ -56,17 +56,27 @@ class Container {
      * @return mixed the object
      */
     private function instantiate($className) {
+        $result = null;
+
         $reflector = new \ReflectionClass($className);
         $constructor = $reflector->getConstructor();
-        $parameterDefinitions = $constructor->getParameters();
-        $parameters = array();
 
-        foreach ($parameterDefinitions as $definition) {
-            $type = $definition->getClass()->name;
-            $parameters[] = $this->resolve($type, $definition->getName());
+        if ($constructor != null) {
+            $parameterDefinitions = $constructor->getParameters();
+            $parameters = array();
+
+            foreach ($parameterDefinitions as $definition) {
+                $type = $definition->getClass()->name;
+                $parameters[] = $this->resolve($type, $definition->getName());
+            }
+
+            $result = $reflector->newInstanceArgs($parameters);
+        } else {
+            $result = $reflector->newInstanceWithoutConstructor();
         }
 
-        return $reflector->newInstanceArgs($parameters);
+        return $result;
+
     }
 
 

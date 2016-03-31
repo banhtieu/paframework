@@ -14,6 +14,21 @@ class User {
     id: number
 }
 
+/** generated service for HelloService */
+@service("helloService")
+class HelloService extends RemoteService {
+
+    /**
+     * Start by saying hello
+     *
+     * @param string name name of the user
+     * @return string message to that user
+     */
+    sayHello(name) {
+        return this.execute("HelloService/sayHello", [name])
+    }
+}
+
 /** generated service for UserService */
 @service("userService")
 class UserService extends RemoteService {
